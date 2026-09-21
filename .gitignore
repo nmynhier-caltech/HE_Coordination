@@ -1,0 +1,15 @@
+# MATLAB editor, crash, and profiling artifacts
+*.asv
+matlab_crash_dump.*
+java.log.*
+*.prf
+
+# Generated media and analysis artifacts should remain under dataRoot
+*.mp4
+*.png
+*.pdf
+*.mat
+
+# Default local input/output locations from config/pipeline_config.m
+/data/
+/results/

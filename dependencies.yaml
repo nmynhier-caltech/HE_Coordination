@@ -1,0 +1,48 @@
+project:
+  name: HE Coordination public analysis
+  tested_matlab_release: R2024b
+  tested_matlab_version: "24.2"
+  tested_operating_system: Windows
+
+matlab_toolboxes:
+  required:
+    - Statistics and Machine Learning Toolbox
+    - Parallel Computing Toolbox
+
+entrypoint:
+  script: Analysis_Macro.m
+  configuration: config/pipeline_config.m
+  complete_command: >-
+    matlab -batch "run('Analysis_Macro.m')"
+  command_line_override: >-
+    matlab -batch "publicDataRoot='D:/downloaded_caltechdata';
+    outputRoot='D:/HE_coord_results'; run('Analysis_Macro.m')"
+
+inputs:
+  manifest: config/data_manifest.csv
+  pattern: >-
+    <publicDataRoot>/session_XX_<area>_results/data/
+    session_XX_<area>_Processed_data.mat
+  areas:
+    - M1
+    - SPL
+    - all
+  mat_variable: data
+  required_fields:
+    - FR
+    - TP1
+    - TP2
+    - TPi1
+    - TPi2
+    - keep_neurons_idx
+  excluded_private_data:
+    - continuous eye-tracking samples
+    - acquisition dates
+    - raw file names and paths
+
+reproducibility:
+  default_random_seed: 1
+  random_generator: twister
+  generated_outputs_are_outside_repository: true
+  processed_inputs_are_read_only: true
+  generated_output_root: outputRoot
