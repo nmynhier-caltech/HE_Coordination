@@ -21,8 +21,7 @@ entrypoint:
 inputs:
   manifest: config/data_manifest.csv
   pattern: >-
-    <publicDataRoot>/session_XX_<area>_results/data/
-    session_XX_<area>_Processed_data.mat
+    <publicDataRoot>/session_XX_<area>_Processed_data.mat
   areas:
     - M1
     - SPL
@@ -34,7 +33,6 @@ inputs:
     - TP2
     - TPi1
     - TPi2
-    - keep_neurons_idx
   excluded_private_data:
     - continuous eye-tracking samples
     - acquisition dates

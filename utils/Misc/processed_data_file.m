@@ -14,6 +14,6 @@ function filePath = processed_data_file(savepath, area)
             tokens{2}, area);
     end
     publicDataRoot = configure_public_data_root();
-    filePath = fullfile(publicDataRoot, sessionFolder, 'data', ...
+    filePath = fullfile(publicDataRoot, ...
         sprintf('%s_%s_Processed_data.mat', tokens{1}, area));
 end

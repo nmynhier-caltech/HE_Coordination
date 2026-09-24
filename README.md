@@ -33,24 +33,26 @@ Download the processed-data release from CaltechDATA and extract it into a
 directory of your choice. This read-only directory is called `publicDataRoot`
 below. Choose a separate writable `outputRoot` for generated results.
 
-The release must preserve the paths in
-[`config/data_manifest.csv`](config/data_manifest.csv). It contains 11
+The release contains all files in one flat directory. The expected names are
+listed in [`config/data_manifest.csv`](config/data_manifest.csv). There are 11
 pseudonymized sessions for each of three area labels (`M1`, `SPL`, and
 combined `all`), for a total of 33 input MAT files:
 
 ```text
 <publicDataRoot>/
-    session_01_M1_results/data/session_01_M1_Processed_data.mat
-    session_01_SPL_results/data/session_01_SPL_Processed_data.mat
-    session_01_all_results/data/session_01_all_Processed_data.mat
+    session_01_M1_Processed_data.mat
+    session_01_SPL_Processed_data.mat
+    session_01_all_Processed_data.mat
     ...
-    session_11_M1_results/data/session_11_M1_Processed_data.mat
-    session_11_SPL_results/data/session_11_SPL_Processed_data.mat
-    session_11_all_results/data/session_11_all_Processed_data.mat
+    session_11_M1_Processed_data.mat
+    session_11_SPL_Processed_data.mat
+    session_11_all_Processed_data.mat
 ```
 
 Each MAT file contains a scalar struct named `data` with fields `FR`, `TP1`,
-`TP2`, `TPi1`, `TPi2`, and `keep_neurons_idx`. `TP2` and `TPi2` are task
+`TP2`, `TPi1`, and `TPi2`. See the complete
+[`DATA_DICTIONARY.md`](DATA_DICTIONARY.md) for matrix dimensions, units,
+condition codes, and trial-alignment details. `TP2` and `TPi2` are task
 target/condition labels, not continuous eye-tracking measurements.
 
 ## 2. Configure the two pipeline locations
@@ -218,9 +220,8 @@ documented in the collector comments.
 
 ## Troubleshooting
 
-- **MATLAB cannot find an input:** compare the extracted data tree with
-  `config/data_manifest.csv`. All 33 files and their directory names are
-  required.
+- **MATLAB cannot find an input:** place all 33 MAT files directly under
+  `publicDataRoot` and compare their names with `config/data_manifest.csv`.
 - **The collector reports a missing PDF:** run the complete pipeline with
   `runSessionAnalyses=true` and `runSummaryFigures=true` first.
 - **An old output remains in a summary folder:** summary folders retain

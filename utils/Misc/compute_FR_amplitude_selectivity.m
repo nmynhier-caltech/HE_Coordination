@@ -8,7 +8,7 @@ function compute_FR_amplitude_selectivity(area, savepath)
 %   - Multiple comparisons correction (BH-FDR) on empirical p-values
 %
 % Assumes preprocessing saved RAW firing rates (Hz) in:
-%   <savepath>/data/<session_id>_<area>_Processed_data.mat
+%   <publicDataRoot>/<session_id>_<area>_Processed_data.mat
 %
 % Outputs (saved to <savepath>/models/<area>_FR_amplitude_selectivity.mat):
 %   AMP, AMP_null, AMP_single, AMP_null_single
