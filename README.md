@@ -18,10 +18,10 @@ lettering, or cosmetic edits applied after the MATLAB plots were exported.
 
 The code was tested with:
 
-- MATLAB R2024b (24.2)
+- MATLAB R2021a and R2024b
 - Statistics and Machine Learning Toolbox
 - Parallel Computing Toolbox
-- Windows
+- Windows and Mac OS
 
 The detailed machine-readable dependency record is
 [`dependencies.yaml`](dependencies.yaml). Generated models and plots are
@@ -88,17 +88,6 @@ adjusting the release name to match your installation:
 ```sh
 /Applications/MATLAB_R2024a.app/bin/matlab -batch "run('Analysis_Macro.m')"
 ```
-
-To use the shorter `matlab` command in the current macOS terminal instead:
-
-```sh
-export PATH="/Applications/MATLAB_R2024a.app/bin:$PATH"
-```
-
-For future zsh sessions, add that export line to `~/.zshrc`. On Linux, use
-the `bin/matlab` executable under your MATLAB installation directory in the
-same way. These launch instructions do not imply that the pipeline has
-been validated on additional platforms or MATLAB releases.
 
 Alternatively, override the configuration without editing it:
 
@@ -238,7 +227,6 @@ documented in the collector comments.
   not depend on execution order.
 - The session order and input names are fixed by `public_session_manifest.m`
   and `config/data_manifest.csv`.
-- Outputs are external to the Git checkout and never overwrite source code.
 - The tested software versions and required fields are recorded in
   `dependencies.yaml`.
 
@@ -254,24 +242,14 @@ documented in the collector comments.
 - **The shell cannot find `matlab` (`command not found` or not recognized):**
   add MATLAB's `bin` directory to the shell's `PATH` or invoke the executable
   by its full path (`matlab.exe` on Windows; see the macOS example above).
-  This error occurs before MATLAB or the pipeline starts. A Conda environment
-  does not need to be deactivated when using MATLAB's full executable path.
 - **A different output location is used:** always set an absolute `outputRoot`.
 
 ## Data availability, citation, and license
 
 Replace these placeholders when the records are public:
 
-- **Processed data DOI:** `https://doi.org/CALTECHDATA_DOI`
-- **Processed data record:** `https://data.caltech.edu/records/CALTECHDATA_RECORD_ID`
-- **Public code repository:** `https://github.com/OWNER/REPOSITORY`
-- **Archived code DOI:** `https://doi.org/CODE_ARCHIVE_DOI`
-- **Article DOI:** `https://doi.org/ARTICLE_DOI`
-
-The public data deposit should contain only the pseudonymized processed
-release described by `config/data_manifest.csv`. Citation metadata based on
-the submitted manuscript are provided in [`CITATION.cff`](CITATION.cff); its
-placeholder URLs, version, release date, and DOI fields must be finalized at
-release.
+- **Processed data DOI:** `https://doi.org/10.22002/p50pc-49s61`
+- **Processed data record:** `https://data.caltech.edu/records/p50pc-49s61`
+- **Public code repository:** `https://github.com/nmynhier-caltech/HE_Coordination`
 
 The code is released under the terms in [`LICENSE`](LICENSE).
