@@ -73,11 +73,32 @@ these two paths.
 
 ## 3. Run the complete pipeline
 
-Open PowerShell in the code-repository root and run:
+Open a terminal in the code-repository root (PowerShell on Windows, or a
+shell such as zsh/bash on macOS or Linux). If MATLAB's `bin` directory is on
+your shell's `PATH`, run:
 
 ```powershell
 matlab -batch "run('Analysis_Macro.m')"
 ```
+
+On macOS, MATLAB may be installed as an application without its command
+being on `PATH`. Invoke the executable inside the application directly,
+adjusting the release name to match your installation:
+
+```sh
+/Applications/MATLAB_R2024a.app/bin/matlab -batch "run('Analysis_Macro.m')"
+```
+
+To use the shorter `matlab` command in the current macOS terminal instead:
+
+```sh
+export PATH="/Applications/MATLAB_R2024a.app/bin:$PATH"
+```
+
+For future zsh sessions, add that export line to `~/.zshrc`. On Linux, use
+the `bin/matlab` executable under your MATLAB installation directory in the
+same way. These launch instructions do not imply that the pipeline has
+been validated on additional platforms or MATLAB releases.
 
 Alternatively, override the configuration without editing it:
 
@@ -86,6 +107,9 @@ matlab -batch "publicDataRoot='D:/downloaded_caltechdata'; outputRoot='D:/HE_coo
 ```
 
 Forward slashes are recommended inside MATLAB path strings.
+The override examples below use Windows paths; on macOS or Linux, replace
+them with absolute paths appropriate to your system, such as
+`/Users/yourname/data` or `/home/yourname/data`.
 
 The command runs these steps in order:
 
@@ -227,8 +251,11 @@ documented in the collector comments.
 - **An old output remains in a summary folder:** summary folders retain
   producer outputs from previous runs. The managed `paper_figures` folders
   are the definitive minimal source sets for the manuscript.
-- **MATLAB is not recognized in PowerShell:** add MATLAB's `bin` directory to
-  `PATH` or invoke the full path to `matlab.exe`.
+- **The shell cannot find `matlab` (`command not found` or not recognized):**
+  add MATLAB's `bin` directory to the shell's `PATH` or invoke the executable
+  by its full path (`matlab.exe` on Windows; see the macOS example above).
+  This error occurs before MATLAB or the pipeline starts. A Conda environment
+  does not need to be deactivated when using MATLAB's full executable path.
 - **A different output location is used:** always set an absolute `outputRoot`.
 
 ## Data availability, citation, and license

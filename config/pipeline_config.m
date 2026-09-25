@@ -1,6 +1,10 @@
 %% HE Coordination public pipeline configuration
-% Edit the two paths below once, then run Analysis_Macro.m. Variables set
+% Edit the two paths below, then run Analysis_Macro.m. Variables set
 % before the macro is called take precedence over these defaults.
+
+% file locations
+% publicDataRoot = [FILL];
+% outputRoot = [FILL];
 
 % Extract the CaltechDATA release here. The pipeline treats it as read-only.
 if ~exist('publicDataRoot', 'var') || isempty(publicDataRoot)
